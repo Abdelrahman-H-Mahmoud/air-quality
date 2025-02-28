@@ -7,7 +7,7 @@ const airQualityController = createAirQualityController();
 
 // Air Quality Routes
 router.get(
-  '/nearest',
+  '/',
   AirQualityValidation.validateCoordinates,
   airQualityController.getNearestCityAirQuality
 );

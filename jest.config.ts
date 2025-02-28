@@ -12,9 +12,7 @@ const config: Config = {
   coverageDirectory: 'coverage',
   moduleFileExtensions: ['ts', 'js'],
   clearMocks: true,
-  moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1'
-  }
+  setupFiles: ['<rootDir>/tests/setup.ts']
 };
 
 export default config; 

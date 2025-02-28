@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { IQAirService } from '../../src/services/iqair.service';
 import { AirQualityModel } from '../../src/models/airQuality.model';
 import { fetchAndSaveAirQuality } from '../../src/workers/airQuality.worker';
-
+import { mockWorkerResponse } from '../fixtures/worker.fixtures';
 jest.mock('mongoose');
 jest.mock('../../src/services/iqair.service');
 jest.mock('../../src/models/airQuality.model', () => ({
@@ -42,21 +42,7 @@ describe('Air Quality Worker', () => {
     (mongoose.disconnect as jest.Mock).mockResolvedValue(undefined);
 
     mockIQAirService = {
-      getCityAirQuality: jest.fn().mockResolvedValue({
-        status: 'success',
-        data: {
-          city: 'Paris',
-          state: 'Ile-de-France',
-          country: 'France',
-          location: { type: 'Point', coordinates: [2.352222, 48.856613] },
-          current: {
-            pollution: {
-              ts: '2024-03-11T12:00:00.000Z',
-              aqius: 50
-            }
-          }
-        }
-      })
+      getCityAirQuality: jest.fn().mockResolvedValue(mockWorkerResponse)
     };
 
     (IQAirService as jest.Mock).mockImplementation(() => mockIQAirService);
