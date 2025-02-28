@@ -5,7 +5,7 @@ import path from 'path';
 export function startAirQualityScheduler() {
   // Run every minute
   cron.schedule('* * * * *', () => {
-    const workerPath = path.resolve(__dirname, '../workers/airQuality.worker');
+    const workerPath = path.resolve(__dirname, '../workers');
     const worker = new Worker(
       require.resolve(workerPath)
     );
