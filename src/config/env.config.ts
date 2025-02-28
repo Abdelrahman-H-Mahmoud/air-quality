@@ -4,14 +4,15 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 interface Config {
+  server: {
+    port: number;
+  };
+  nodeEnv: string;
   database: {
     url: string;
   };
   iqair: {
     apiKey: string;
-  };
-  server: {
-    port: number;
   };
 }
 
@@ -25,6 +26,7 @@ export const config: Config = {
   server: {
     port: parseInt(process.env.PORT || '3000', 10),
   },
+  nodeEnv: process.env.NODE_ENV || 'development',
 };
 
 // Validate required environment variables
