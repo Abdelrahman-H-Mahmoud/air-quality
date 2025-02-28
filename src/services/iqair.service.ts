@@ -26,6 +26,7 @@ export class IQAirService {
     }
     return this.getNearestCity(coordinates.lat, coordinates.lon);
   }
+  
   async getMostPollutedDateTime(city: string): Promise<AirQualityData | null> {
     const mostPolluted = await AirQualityModel
       .findOne({ city })
